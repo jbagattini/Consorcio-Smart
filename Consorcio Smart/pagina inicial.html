@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Gestión Edilicia & Domótica</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0d9488;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .logo-area h1 {
+            font-size: 1.5rem;
+        }
+
+        .logo-area p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-dashboard { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Semáforo de Patologías */
+        .semaforo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            background: var(--light);
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .badge.urgente { background-color: var(--danger); }
+        .badge.alerta { background-color: var(--warning); }
+        .badge.optimo { background-color: var(--success); }
+
+        /* Tienda E-commerce */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .product-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 150px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin: 0.5rem 0;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn:hover { background-color: var(--secondary); }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        .legal-info {
+            opacity: 0.7;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>Consorcio Smart (R.U 2K2)</h1>
+            <p>Auditoría Integral & Soluciones Tecnológicas</p>
+        </div>
+        <nav>
+            <a href="#informes">Mis Informes</a>
+            <a href="#tienda">Tienda Importados</a>
+            <a href="#beneficios">Club Copropietarios</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>Programa de Mantenimiento Plurianual & Servicios</h2>
+            <p>Auditorías bajo normativas legales segun Códigos vigentes en CABA, Eficiencia Energética e integridad Edilicia.</p>
+        </div>
+
+        <div class="grid-dashboard">
+
+            <!-- Columna Principal: Gestión del Consorcio -->
+            <div class="main-content">
+
+                <div class="card" id="informes">
+                    <h3>Estado General del Edificio: Mite 1234</h3>
+
+                    <div class="semaforo-item">
+                        <span>Fachadas y Estructura (Ley 257 CABA)</span>
+                        <span class="badge urgente">URGENTE: Desprendimientos</span>
+                    </div>
+                    <div class="semaforo-item">
+                        <span>Instalación de Gas y Plomería</span>
+                        <span class="badge alerta">ALERTA: Colector Obsoleto</span>
+                    </div>
+                    <div class="semaforo-item">
+                        <span>Automatización Sala de Máquinas</span>
+                        <span class="badge optimo">ÓPTIMO: Bombas Inteligentes</span>
+                    </div>
+                    <div class="semaforo-item">
+                        <span>Eficiencia Energética e Iluminación</span>
+                        <span class="badge alerta">ALERTA: Recambio LED Pendiente</span>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <button class="btn" onclick="alert('Descargando Informe Técnico Firmado PDF...')">
+                            Descargar Último Informe Técnico (Mat. 32.015)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card" id="beneficios">
+                    <h3>Club de Beneficios para Copropietarios</h3>
+                    <p>Por formar parte del Plan Anual, disponés de descuentos exclusivos del 15% al 25% para refaccionar o domotizar tu departamento de forma privada.</p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <button class="btn" style="background-color: var(--secondary);" onclick="alert('Tu código QR de descuento es: CONSORCIO-32015')">
+                            Generar QR de Descuento Ferreterías/Pinturerías
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Columna Lateral: Plan de Recaudación -->
+            <div class="sidebar">
+                <div class="card">
+                    <h3>Planificación de Expensas</h3>
+                    <p><strong>Fondo de Reserva Sugerido:</strong></p>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #6b7280;">Basado en el informe del Arquitecto.</p>
+                    <ul>
+                        <li>Etapa 1 (Fachada): $500.000 x 6 meses.</li>
+                        <li>Etapa 2 (Gas): Recaudación diferida.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección E-commerce: Importación Directa -->
+        <div class="card" id="tienda">
+            <h3>Tienda de Automatización, Domótica y Seguridad (Importación Directa)</h3>
+            <p>Equipamiento tecnológico sin intermediarios, con el mejor margen mayorista del mercado e instalación llave en mano por nuestra cooperativa.</p>
+
+            <div class="shop-grid">
+
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-img">CÁMARA IP DOMO</div>
+                    <h4>Domo Seguridad Exterior</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Consorcios y Accesos</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-img">RELÉ INTELIGENTE</div>
+                    <h4>Control de Sala Máquinas</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Automatización de Bombas</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-img">SENSOR MOVIMIENTO</div>
+                    <h4>Sensor PIR Exterior</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Iluminación Automática</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-img">CONTROLADOR WIFI</div>
+                    <h4>Hub Central Domótica</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Integración Total</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="product-img">CERRADURA SMART</div>
+                    <h4>Cerradura Digital Acceso</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Sum y Cocheras</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <div class="product-img">PANEL SOLAR</div>
+                    <h4>Kit Energía Renovable</h4>
+                    <p style="font-size: 0.8rem; color:#6b7280;">Ahorro Energético</p>
+                    <div class="price">Precio Mayorista</div>
+                    <button class="btn" onclick="alert('Agregado al presupuesto del consorcio')">Cotizar Obra</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Sección de Contacto -->
+        <div class="card">
+            <h3>¿Necesitás una Auditoría o Presupuesto?</h3>
+            <p style="margin-bottom: 1rem;">Nuestro equipo de profesionales matriculados está listo para asistirte.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn" style="flex: 1; min-width: 200px;" onclick="alert('Abriendo formulario de contacto...')">
+                    Solicitar Auditoría Edilicia
+                </button>
+                <button class="btn" style="flex: 1; min-width: 200px; background-color: var(--secondary);" onclick="alert('Abriendo formulario de presupuesto...')">
+                    Presupuesto Domótica/Seguridad
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Consorcio Inteligente - Auditoría Integral & Soluciones Tecnológicas</p>
+        <p class="legal-info">
+            Profesionales Matriculados | Ley 257 CABA | Importación Directa Autorizada | Planes Anuales de Mantenimiento
+        </p>
+    </footer>
+
+</body>
+</html>
